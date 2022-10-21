@@ -2,6 +2,10 @@
 
 <h5>수정중! 비공개</h5>
 
+week4_board_plus 의 Second Repository
+- 메인 프로젝트 폴더는 week4_board_plus이며, 5주차의 3 Layered Architecture 까지 구현한 버전
+- week4, week5 커버 
+
 <!--
 22.10.01
 1. schemas에 unique 해제 및 mongodb의 인덱스 삭제. Mongo Server Error: E11000 duplicate key error 오류 해결
