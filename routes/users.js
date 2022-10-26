@@ -52,7 +52,7 @@ const user_validation = require('../validation/user_validation')
  *       parameters:
  *       - name: "userId"
  *         in: "body"
- *         description: "아이디"
+ *         description: "유저아이디"
  *         type: "string"
  *       - name: "nickname"
  *         in: "body"
