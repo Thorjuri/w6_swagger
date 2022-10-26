@@ -19,17 +19,18 @@ class PostRepository {
 
     getPost = async()=>{
         const getPostData = await Post.findAll({});
+        console.log(getPostData)
         
         if(getPostData.length < 1){
             return {message : "게시글이 존재하지 않습니다", data: null}
         }
-        const postSort = getPostData.sort((a,b) => {
-            if(a.createAt > b.createAt) return -1;
-            if(a.createAt < b.createAt) return 1;
-            return 0;
-        })
+        // const postSort = getPostData.sort((a,b) => {
+        //     if(a.createAt > b.createAt) return -1;
+        //     if(a.createAt < b.createAt) return 1;
+        //     return 0;
+        // })
 
-        return {message: '전체 글 목록', data: postSort}         
+        return getPostData;        
     };
 
 
@@ -46,12 +47,10 @@ class PostRepository {
 
             try{
                 const createPostData = await Post.create({ postId:newPostId, title, postContent, postName:nickname, password });
-                await Likes.create({
-                    postId: newPostId
-                });
+                
                 return {data: createPostData, message: `${newPostId}번째 글이 저장되었습니다`};
             }catch (error) {
-                return{data: error.message, message: '게시글 저장중 에러가 발생했습니다'};
+                return{data: error.message, message: error.message};
             };
     };
 

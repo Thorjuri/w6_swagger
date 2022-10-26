@@ -16,7 +16,7 @@ class CommentService {
     updateComment = async(postId, cmtId, cmtContent)=> {
         const updateCommentData = await this.commentRepository.updateComment(postId, cmtId, cmtContent);
         return updateCommentData;
-    };
+    }; 
 
     deleteComment = async(postId, cmtId)=> {
         const deleteCommentData = await this.commentRepository.deleteComment(postId, cmtId);

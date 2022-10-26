@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "nodemon": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -16,10 +17,13 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.3",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
     "sequelize": "^6.24.0"
   },
   "devDependencies": {
     "jest": "^29.2.0",
-    "sequelize-cli": "^6.5.1"
+    "sequelize-cli": "^6.5.1",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.5.0"
   }
 }

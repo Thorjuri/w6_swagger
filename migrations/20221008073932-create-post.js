@@ -13,7 +13,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       likes: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: true
       },
       // likeUser: {
       //   type: Sequelize.STRING,
@@ -31,10 +32,10 @@ module.exports = {
       postName: {
         type: Sequelize.STRING
       },
-      postDate: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
+      // postDate: {
+      //   type: Sequelize.DATE,
+      //   defaultValue: Sequelize.DATE
+      // },
       password: {
         type: Sequelize.STRING
       },

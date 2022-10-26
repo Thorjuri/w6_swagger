@@ -8,6 +8,36 @@ const authMiddleware = require("../middlewares/auth_middleware");
 const user_validation = require('../validation/user_validation')
 
 
+/**
+ * @swagger
+ * tags:
+ *   name: Users
+ *   definitions:
+ *     description: 유저 
+ *     Post:
+ *       properties:
+ *         title:
+ *           type: "string"
+ *         description:
+ *           type: "string"
+ *         writer:
+ *           type: "string"
+ *         category:
+ *           type: "string"
+ *         price:
+ *           type: "integer"
+ *           format: "int64"
+ *         state:
+ *           type: "integer"
+ *           format: "int64"
+ *         images:
+ *           type: "array"
+ *           items:
+ *             type: "string"
+*/
+
+
+
 // 1.회원가입 (Joi validation)
 router.post('/', user_validation.user_singup, userController.createUser);
 

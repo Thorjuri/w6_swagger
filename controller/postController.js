@@ -5,12 +5,13 @@ class PostController {
 
     getPost = async(req, res, next)=> {
         const getPostData = await this.postService.getPost();
-        res.send(getPostData)
+        res.json({getPostData})
     };
 
     createPost = async(req, res, next)=> {
         const {title, postContent, password} = req.body;
-        const nickname = res.locals.user[0].nickname;
+        // const nickname = res.locals.user[0].nickname;
+        const nickname = "hi"
         const createPostData = await this.postService.createPost(nickname, title, postContent, password);
         res.json({result: createPostData});
     };

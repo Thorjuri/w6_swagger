@@ -14,14 +14,19 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Post.init({
-    likes: DataTypes.INTEGER,
-    // likeUser: DataTypes.STRING,
+    likes: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },  
     postId: DataTypes.INTEGER,
     title: DataTypes.STRING,
     postContent: DataTypes.STRING,
     postName: DataTypes.STRING,
-    // postDate: DataTypes.STRING,
-    password: DataTypes.STRING
+    // postDate: {
+    //   type: DataTypes.DATE,
+    //   defaultValue: DataTypes.DATE
+    // },
+  password: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Post',

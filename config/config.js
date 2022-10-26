@@ -4,9 +4,9 @@ require('dotenv').config();
 const development = {
     "username": process.env.DB_USERNAME,
     "password": process.env.DB_PASSWORD,
-    "database": "database_developments",
+    "database": "swagger_test",
     "host": process.env.DB_ENDPOINT,
-    "dialect": "mysql"
+    "dialect": "mysql" 
   };
 const test = {
     "username": "root",
