@@ -3,6 +3,7 @@ const Joi = require("joi")
 const user_validation = { 
 	user_singup : async (req, res, next) =>{ 
     	const body = req.body; 
+      console.log(body)
     	const schema = Joi.object().keys({ 
     		userId: Joi.string().min(4).max(20).required(),
             nickname: Joi.string().required()

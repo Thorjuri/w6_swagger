@@ -37,7 +37,43 @@ const user_validation = require('../validation/user_validation')
 */
 
 
-
+/**
+ * @swagger
+ *   /users:
+ *     post:
+ *       tags:
+ *         - Users
+ *       description: 회원가입
+ *       produces:
+ *       - "application/json"
+ *       headers:
+ *         Accept: "application/json"
+ *         authorization: "Bearer token"
+ *       parameters:
+ *       - name: "userId"
+ *         in: "body"
+ *         description: "아이디"
+ *         type: "string"
+ *       - name: "nickname"
+ *         in: "body"
+ *         description: "닉네임"
+ *         type: "string"
+ *       - name: "email"
+ *         in: "body"
+ *         description: "이메일"
+ *         type: "string"
+ *       - name: "password"
+ *         in: "body"
+ *         description: "비밀번호"
+ *         type: "string"
+ *       - name: "authorization"
+ *         in: "header"
+ *         description: "헤더 토큰"
+ *         type: "string"
+ *       responses:
+ *         "200":
+ *           description: "successful operation"
+*/
 // 1.회원가입 (Joi validation)
 router.post('/', user_validation.user_singup, userController.createUser);
 
