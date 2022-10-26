@@ -12,27 +12,27 @@ const authMiddleware = require("../middlewares/auth_middleware");
  * tags:
  *   name: Post
  *   definitions:
- *     description: 
- *       Post:
- *         properties:
- *           title:
+ *     description: 게시글
+ *     Post:
+ *       properties:
+ *         title:
+ *           type: "string"
+ *         description:
+ *           type: "string"
+ *         writer:
+ *           type: "string"
+ *         category:
+ *           type: "string"
+ *         price:
+ *           type: "integer"
+ *           format: "int64"
+ *         state:
+ *           type: "integer"
+ *           format: "int64"
+ *         images:
+ *           type: "array"
+ *           items:
  *             type: "string"
- *           description:
- *             type: "string"
- *           writer:
- *             type: "string"
- *           category:
- *             type: "string"
- *           price:
- *             type: "integer"
- *             format: "int64"
- *           state:
- *             type: "integer"
- *             format: "int64"
- *           images:
- *             type: "array"
- *             items:
- *               type: "string"
 */
 // 위와 같이 각 라우트 파일마다 최상단에 태그를 만들어주었습니다.
 // definitions에는 Post라는 이름의 object를 만들어주었습니다.
@@ -91,13 +91,17 @@ router.get('/list', postController.getPost);
  *       in: "body"
  *       description: "게시글 비밀번호"
  *       type: "string"
+ *     - name: "authorization"
+ *       in: "header"
+ *       description: "헤더 토큰"
+ *       type: "string"
  *     responses:
  *       "200":
  *         description: "successful operation"
  *     
 */
 //게시글 작성
-router.post('/write', postController.createPost);
+router.post('/write', authMiddleware, postController.createPost);
 
 /**
  * @swagger
@@ -111,12 +115,16 @@ router.post('/write', postController.createPost);
  *       in: "path"
  *       description: "게시글 postId"
  *       type: "integer"
+ *     - name: "authorization"
+ *       in: "header"
+ *       description: "헤더 토큰"
+ *       type: "string"
  *     responses:
  *       "200":
  *         description: "successful operation"     
 */
 //게시글 상세보기 
-router.get('/:postId', postController.getPostOne);
+router.get('/:postId', authMiddleware, postController.getPostOne);
 
 /**
  * @swagger
@@ -134,6 +142,10 @@ router.get('/:postId', postController.getPostOne);
  *       in: "body"
  *       description: "수정할 내용"
  *       type: "string"
+ *     - name: "authorization"
+ *       in: "header"
+ *       description: "헤더 토큰"
+ *       type: "string"
  *     responses:
  *       "200":
  *         description: "successful operation" 
@@ -141,7 +153,7 @@ router.get('/:postId', postController.getPostOne);
  *       $ref: '#/definitions/Post'
 */
 //게시글 수정
-router.put('/:postId', postController.updatePost);
+router.put('/:postId', authMiddleware, postController.updatePost);
 
 /**
  * @swagger
