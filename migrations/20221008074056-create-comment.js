@@ -21,10 +21,11 @@ module.exports = {
       cmtName: {
         type: Sequelize.STRING
       },
-      cmtDate: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
+      // cmtDate: {
+      //   type: Sequelize.DATE,
+      //   allowNull: false,
+      //   defaultValue: Sequelize.DATE.now
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

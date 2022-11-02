@@ -14,11 +14,37 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Comment.init({
-    postId: DataTypes.INTEGER,
-    cmtId: DataTypes.INTEGER,
-    cmtContent: DataTypes.STRING,
-    cmtName: DataTypes.STRING,
-    // cmtDate: DataTypes.STRING
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    postId: {
+      type: DataTypes.INTEGER
+    },
+    cmtId: {
+      type: DataTypes.INTEGER
+    },
+    cmtContent: {
+      type: DataTypes.STRING
+    },
+    cmtName: {
+      type: DataTypes.STRING
+    },
+    // cmtDate: {
+    //   type: DataTypes.DATE,
+    //   allowNull: false,
+    //   defaultValue: DataTypes.DATE.now
+    // },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'Comment',

@@ -4,11 +4,11 @@ const swaggerJSDoc = require('swagger-jsdoc');
 
 var swaggerDefinition = {
     info : { // 정보 작성
-        title : "test API",
-        version : "1.0.0",
-        description : "grooom-post-server API DOCs" 
+        title : "나만의 블로그 API 명세",
+        version : "2.0.0",
+        description : "swagger 실습. 파일 w6_swagger의 API 명세" 
     },
-    host : "localhost:3000", // base-url
+    host : "localhost:4000", // base-url
     basePath : "/", // base path
     securityDefinitions: {
         bearerAuth: {
@@ -22,7 +22,7 @@ var swaggerDefinition = {
 
 var options = {
     swaggerDefinition: swaggerDefinition,
-    apis : ['./routes/post.js', './routes/users.js']
+    apis : ['./routes/post.js', './routes/users.js', './routes/comment.js']
 };
 
 const swaggerSpec = swaggerJSDoc(options);

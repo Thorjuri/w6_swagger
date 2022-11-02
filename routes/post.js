@@ -34,6 +34,7 @@ const authMiddleware = require("../middlewares/auth_middleware");
  *           items:
  *             type: "string"
 */
+
 // 위와 같이 각 라우트 파일마다 최상단에 태그를 만들어주었습니다.
 // definitions에는 Post라는 이름의 object를 만들어주었습니다.
 // properties에는 Post object의 각 속성과 타입을 지정해주었습니다.
@@ -53,6 +54,8 @@ const authMiddleware = require("../middlewares/auth_middleware");
  * @swagger
  * /post/list:
  *   get:
+ *     tags:
+ *       - Post
  *     description: 게시글 목록 조회
  *     headers:
  *       Accept: "application/json"
@@ -61,8 +64,11 @@ const authMiddleware = require("../middlewares/auth_middleware");
  *     - "application/json"
  *     responses:
  *       "200":
- *         description: "게시글 전체목록 조회 성공"
- */
+ *         description: "successful operation"
+ *       "400":
+ *         description: "failed operation"
+*/
+
 //게시글 전체 목록
 router.get('/list', postController.getPost);
 
@@ -72,6 +78,8 @@ router.get('/list', postController.getPost);
  * @swagger
  * /post/write:
  *   post:
+ *     tags:
+ *       - Post
  *     description: 게시글 작성
  *     produces:
  *     - "application/json"
@@ -81,15 +89,7 @@ router.get('/list', postController.getPost);
  *     parameters:
  *     - name: "title"
  *       in: "body"
- *       description: "게시글 제목"
- *       type: "string"
- *     - name: "postContent"
- *       in: "body"
- *       description: "게시글 내용"
- *       type: "string"
- *     - name: "password"
- *       in: "body"
- *       description: "게시글 비밀번호"
+ *       description: "게시글 내용: 제목, 본문, 글, 비밀번호"
  *       type: "string"
  *     - name: "authorization"
  *       in: "header"
@@ -98,8 +98,10 @@ router.get('/list', postController.getPost);
  *     responses:
  *       "200":
  *         description: "successful operation"
- *     
+ *       "400":
+ *         description: "failed operation"      
 */
+
 //게시글 작성
 router.post('/write', authMiddleware, postController.createPost);
 
@@ -107,6 +109,8 @@ router.post('/write', authMiddleware, postController.createPost);
  * @swagger
  * /post/{:postId}:
  *   get:
+ *     tags:
+ *       - Post
  *     description: 게시글 상세보기
  *     produces:
  *     - "application/json"
@@ -122,7 +126,10 @@ router.post('/write', authMiddleware, postController.createPost);
  *     responses:
  *       "200":
  *         description: "successful operation"     
+ *       "400":
+ *         description: "failed operation"
 */
+
 //게시글 상세보기 
 router.get('/:postId', authMiddleware, postController.getPostOne);
 
@@ -130,6 +137,8 @@ router.get('/:postId', authMiddleware, postController.getPostOne);
  * @swagger
  * /post/{:postId}:
  *   put:
+ *     tags:
+ *       - Post
  *     description: 게시글 상세보기
  *     produces:
  *     - "application/json"
@@ -149,9 +158,10 @@ router.get('/:postId', authMiddleware, postController.getPostOne);
  *     responses:
  *       "200":
  *         description: "successful operation" 
- *     schema:
- *       $ref: '#/definitions/Post'
+ *       "400":
+ *         description: "failed operation"
 */
+
 //게시글 수정
 router.put('/:postId', authMiddleware, postController.updatePost);
 
@@ -159,6 +169,8 @@ router.put('/:postId', authMiddleware, postController.updatePost);
  * @swagger
  * /post/{:postId}:
  *   delete:
+ *     tags:
+ *       - Post
  *     description: 게시글 삭제
  *     produces:
  *     - "application/json"
@@ -178,7 +190,10 @@ router.put('/:postId', authMiddleware, postController.updatePost);
  *     responses:
  *       "200":
  *         description: "successful operation"     
-*/   
+ *       "400":
+ *         description: "failed operation"
+*/
+
 //게시글 삭제
 router.delete('/:postId', authMiddleware, postController.deletePost);
 
@@ -186,6 +201,8 @@ router.delete('/:postId', authMiddleware, postController.deletePost);
  * @swagger
  * /post/{:postId}/like:
  *   put:
+ *     tags:
+ *       - Post
  *     description: 좋아요 반영 및 취소
  *     produces:
  *     - "application/json"
@@ -201,7 +218,10 @@ router.delete('/:postId', authMiddleware, postController.deletePost);
  *     responses:
  *       "200":
  *         description: "successful operation"     
-*/   
+ *       "400":
+ *         description: "failed operation"
+*/
+
 //좋아요 반영 및 취소 
 router.put('/:postId/like', authMiddleware, postController.updateLike);
 

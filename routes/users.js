@@ -50,21 +50,9 @@ const user_validation = require('../validation/user_validation')
  *         Accept: "application/json"
  *         authorization: "Bearer token"
  *       parameters:
- *       - name: "userId"
+ *       - name: "body"
  *         in: "body"
- *         description: "유저아이디"
- *         type: "string"
- *       - name: "nickname"
- *         in: "body"
- *         description: "닉네임"
- *         type: "string"
- *       - name: "email"
- *         in: "body"
- *         description: "이메일"
- *         type: "string"
- *       - name: "password"
- *         in: "body"
- *         description: "비밀번호"
+ *         description: "회원가입 정보"
  *         type: "string"
  *       - name: "authorization"
  *         in: "header"
@@ -73,14 +61,67 @@ const user_validation = require('../validation/user_validation')
  *       responses:
  *         "200":
  *           description: "successful operation"
+ *         "400":
+ *           description: "failed operation"
 */
+
 // 1.회원가입 (Joi validation)
 router.post('/', user_validation.user_singup, userController.createUser);
 
+/**
+ * @swagger
+ *   /users/auth:
+ *     post:
+ *       tags:
+ *         - Users
+ *       description: 로그인
+ *       produces:
+ *       - "application/json"
+ *       headers:
+ *         Accept: "application/json"
+ *         authorization: "Bearer token"
+ *       parameters:
+ *       - name: "body"
+ *         in: "body"
+ *         description: "로그인 정보"
+ *         type: "string"
+ *       - name: "authorization"
+ *         in: "header"
+ *         description: "헤더 토큰"
+ *         type: "string"
+ *       responses:
+ *         "200":
+ *           description: "successful operation"
+ *         "400":
+ *           description: "failed operation"
+*/
 
 //2.로그인(토큰 발급)
 router.post('/auth' ,userController.login);
 
+/**
+ * @swagger
+ *   /users/me:
+ *     get:
+ *       tags:
+ *         - Users
+ *       description: 마이페이지
+ *       produces:
+ *       - "application/json"
+ *       headers:
+ *         Accept: "application/json"
+ *         authorization: "Bearer token"
+ *       parameters:
+ *       - name: "authorization"
+ *         in: "header"
+ *         description: "헤더 토큰"
+ *         type: "string"
+ *       responses:
+ *         "200":
+ *           description: "successful operation"
+ *         "400":
+ *           description: "failed operation"
+*/
 
 // 3. 마이페이지 (내 정보, 좋아요한 글)
 router.get('/me', authMiddleware, userController.getUser)

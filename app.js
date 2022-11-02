@@ -1,19 +1,13 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 4000;
 const Router = require('./routes/index.js')
 const swaggerUi = require('swagger-ui-express');
 app.use(express.json());
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(require('./swagger.js')));
 
-
-
-
-
 app.use("/", Router);
-
-
 
 
 

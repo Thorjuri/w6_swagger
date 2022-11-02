@@ -6,7 +6,8 @@ class CommentController {
     createComment = async(req, res, next)=> {
         const {postId} = req.params;
         const {cmtContent} = req.body;
-        const nickname = res.locals.user[0].nickname;
+        // const nickname = res.locals.user[0].nickname;
+        const nickname = "user11"
         const createCommentData = await this.commentService.createComment(postId, nickname, cmtContent);
         res.send(createCommentData);
     };
@@ -18,15 +19,14 @@ class CommentController {
     };
 
     updateComment = async(req, res, next)=> {
-        const {postId} = req.params;
-        const {cmtId, cmtContent} = req.body;
+        const {postId, cmtId} = req.params;
+        const {cmtContent} = req.body;
         const updateCommentData = await this.commentService.updateComment(postId, cmtId, cmtContent);
         res.send(updateCommentData);
     };
 
     deleteComment = async(req, res, next)=> {
-        const {postId} = req.params;
-        const {cmtId} = req.body;
+        const {postId, cmtId} = req.params;
         const deleteCommentData = await this.commentService.deleteComment(postId, cmtId);
         res.send(deleteCommentData);
     };
